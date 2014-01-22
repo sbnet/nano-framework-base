@@ -7,8 +7,8 @@ $_ROUTE = array(
             'default' => array('route'=>'/:controller/:action'),
             'default_small' => array('route'=>'/:controller'),
         ),
-        'default_controller'=> 'Accueil',
+        'default_controller'=> '\Demo\Controllers\Home',
         'default_action' => 'index',
-        'not_found' => 'Accueil/notfound'
+        'not_found' => 'Home/notfound'
     ),
 );
