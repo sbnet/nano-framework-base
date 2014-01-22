@@ -1,0 +1,65 @@
+<?php
+/**
+*
+* Configuration file
+* Specific for development environment
+*
+* @package Configuration
+* @author Stéphane BRUN <stephane@sbnet.fr>
+*/
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
+use Monolog\Handler\ChromePHPHandler;
+
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', true);
+
+// Path
+define('WEB_PATH', 'http://nano1');
+define('WEB_RELATIVE_PATH', '');
+define('WEB_PUBLIC', WEB_PATH.'/');
+define('WEB_CSS', WEB_PUBLIC.'stylesheets/');
+define('WEB_JAVASCRIPTS', WEB_PUBLIC.'javascripts/');
+
+define('CACHING', false);
+
+// Log configuration
+// This is an example of a development configuration
+// In a production environment you should remove the FirePHP and ChromePHP handler
+// You also should set the log level to Logger::WARNING or Logger::ERROR
+$log_nano = new Logger('nano');
+$log_nano->pushHandler(new StreamHandler(DIR_LOGS."{$GLOBALS['env']['environment']}.log", Logger::DEBUG));
+$log_nano->pushHandler(new FirePHPHandler());
+$log_nano->pushHandler(new ChromePHPHandler());
+NanoFramework\Kernel\Seringue::get_instance()->log_nano = $log_nano;
+
+/*
+// Database connexion
+NanoFramework\Kernel\Plugin::enable('Doctrine2');
+
+$cache = new \Doctrine\Common\Cache\ArrayCache;
+
+$config = new Doctrine\ORM\Configuration;
+$config->setMetadataCacheImpl($cache);
+$driverImpl = $config->newDefaultAnnotationDriver(DIR_MODELS);
+$config->setMetadataDriverImpl($driverImpl);
+$config->setQueryCacheImpl($cache);
+$config->setProxyDir(DIR_MODELS.'Proxies');
+$config->setProxyNamespace('Proxies');
+$config->setAutoGenerateProxyClasses(true);
+
+$connection_options = array(
+    'driver'   => 'pdo_mysql',
+    'user'     => 'root',
+    'password' => 'root_pass',
+    'host'     => 'localhost',
+    'dbname'   => 'nano',
+);
+
+$doctrine = new StdClass();
+$doctrine->config = $config;
+$doctrine->em = Doctrine\ORM\EntityManager::create($connection_options, $config);
+
+NanoFramework\Kernel\Seringue::get_instance()->doctrine = $doctrine;
+*/

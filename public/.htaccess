@@ -1,0 +1,31 @@
+AddDefaultCharset UTF-8
+
+ErrorDocument 500 "<h1>What, what, what, what, what, what, what, what, what, what?</h1>You've broken something !"
+
+RewriteEngine on
+RewriteBase /
+
+# 404 for the missing favicons
+RewriteRule ^favicon.ico$ favicon.ico [L]
+
+# Check if maintenance.html is here
+RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+RewriteRule ^.*$ maintenance.html [L]
+
+#----------------------------------------------------------
+# You can add here some extra rewrite rules to match your differents
+# modules, in the examples below : 
+# http://mysite/front/some_controller will redirect to :
+# http://mysite/index-front.php/some_controller
+# which is a more pretty url
+#
+# Users Administration module
+# RewriteCond %{REQUEST_URI} ^/front.*    
+# RewriteRule ^front(.*) index-front.php [QSA,L] 
+#----------------------------------------------------------
+
+# Use nano only for missing files, directories, links
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule .* index.php [QSA]

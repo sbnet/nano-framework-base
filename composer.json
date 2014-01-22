@@ -1,0 +1,25 @@
+{
+    "name": "sbnet/nano-framework-base",
+    "license": "GPL-2.0",
+    "type": "project",
+    "description": "The Nano Framework base installation",
+    "keywords": ["framework", "php"],
+    "homepage": "http://www.nano-framework.com",
+
+    "authors": [
+        {
+            "name": "Stephane BRUN",
+            "email": "stephane@sbnet.fr",
+            "homepage": "http://www.sbnet.fr"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": { "": "app/" }
+    },
+
+    "require": {
+    	"php": ">=5.3.3",
+        "sbnet/nano-framework": "dev-master"
+    }
+}
