@@ -25,7 +25,6 @@ if(isset($GLOBALS['env']['MODULE_NAME']))
     $GLOBALS['env']['DIR_CONTROLLERS'] = DIR_MODULES.$GLOBALS['env']['MODULE_NAME'].'/Controllers/';
 }
 
-// include DIR_LIBRARIES.'Kernel/NanoException.php';
 include DIR_VENDOR.'Autoload.php';
 
-set_exception_handler(array('NanoFramework\Kernel\NanoException', 'exception_handler'));
+set_exception_handler(array('NanoFramework\Kernel\Exception', 'exception_handler'));
