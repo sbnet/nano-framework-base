@@ -8,7 +8,12 @@
 include "global_config.php";
 include "environment.php";
 
-define('VIEW_ENGINE', 'Php');
+$container = NanoFramework\Kernel\Seringue::get_instance();
+$container->configuration = array(
+    'view' => array(
+        'engine' => 'NanoFrameworkPlugins\ViewEngine\Php\Engine'
+    )
+);
 
 include DIR_CONFIG."environments/{$GLOBALS['env']['environment']}.php";
 

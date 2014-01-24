@@ -13,5 +13,6 @@ class Home extends Kernel\Controller
 
     public function index()
     {
+        // throw new Kernel\Exception(_("The view engine"), E_ERROR);
     }
 }
