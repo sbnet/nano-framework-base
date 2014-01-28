@@ -18,11 +18,10 @@ define('DIR_CACHE', DIR_TEMP.'cache/');
 define('DIR_LOGS', ROOT_PATH.'/logs/');
 define('DIR_CONFIG', ROOT_PATH.'/configuration/');
 
-define('DIR_MODULES', DIR_APP.'modules/');
 if(isset($GLOBALS['env']['MODULE_NAME']))
 {
-    $GLOBALS['env']['DIR_VIEWS'] = DIR_MODULES.$GLOBALS['env']['MODULE_NAME'].'/views/';
-    $GLOBALS['env']['DIR_CONTROLLERS'] = DIR_MODULES.$GLOBALS['env']['MODULE_NAME'].'/Controllers/';
+    $GLOBALS['env']['DIR_VIEWS'] = DIR_APP.$GLOBALS['env']['MODULE_NAME'].'/views/';
+    $GLOBALS['env']['DIR_CONTROLLERS'] = DIR_APP.$GLOBALS['env']['MODULE_NAME'].'/Controllers/';
 }
 
 include DIR_VENDOR.'Autoload.php';
