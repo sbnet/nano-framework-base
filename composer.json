@@ -5,6 +5,9 @@
     "description": "The Nano Framework base installation",
     "keywords": ["framework", "php"],
     "homepage": "http://www.nano-framework.com",
+    
+    "minimum-stability": "dev",
+    "prefer-stable": true,
 
     "authors": [
         {
